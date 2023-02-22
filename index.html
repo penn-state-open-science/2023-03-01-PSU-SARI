@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Rick Gilmore" />
+  <meta name="dcterms.date" content="2023-02-22" />
+  <title>Sharing Image &amp; Video Data</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="libs/reveal.js-3.3.0.1/css/reveal.css"/>
+
+
+
+<link rel="stylesheet" href="libs/reveal.js-3.3.0.1/css/theme/simple.css" id="theme">
+
+
+  <!-- some tweaks to reveal css -->
+  <style type="text/css">
+    .reveal h1 { font-size: 2.0em; }
+    .reveal h2 { font-size: 1.5em;  }
+    .reveal h3 { font-size: 1.25em;	}
+    .reveal h4 { font-size: 1em;	}
+
+    .reveal .slides>section,
+    .reveal .slides>section>section {
+      padding: 0px 0px;
+    }
+
+
+
+    .reveal table {
+      border-width: 1px;
+      border-spacing: 2px;
+      border-style: dotted;
+      border-color: gray;
+      border-collapse: collapse;
+      font-size: 0.7em;
+    }
+
+    .reveal table th {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      font-weight: bold;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+    .reveal table td {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+
+  </style>
+
+    <style type="text/css">code{white-space: pre;}</style>
+
+    <link rel="stylesheet" href="include/css/styles.css"/>
+
+<!-- Printing and PDF exports -->
+<script id="paper-css" type="application/dynamic-css">
+
+/* Default Print Stylesheet Template
+   by Rob Glazebrook of CSSnewbie.com
+   Last Updated: June 4, 2008
+
+   Feel free (nay, compelled) to edit, append, and
+   manipulate this file as you see fit. */
+
+
+@media print {
+
+	/* SECTION 1: Set default width, margin, float, and
+	   background. This prevents elements from extending
+	   beyond the edge of the printed page, and prevents
+	   unnecessary background images from printing */
+	html {
+		background: #fff;
+		width: auto;
+		height: auto;
+		overflow: visible;
+	}
+	body {
+		background: #fff;
+		font-size: 20pt;
+		width: auto;
+		height: auto;
+		border: 0;
+		margin: 0 5%;
+		padding: 0;
+		overflow: visible;
+		float: none !important;
+	}
+
+	/* SECTION 2: Remove any elements not needed in print.
+	   This would include navigation, ads, sidebars, etc. */
+	.nestedarrow,
+	.controls,
+	.fork-reveal,
+	.share-reveal,
+	.state-background,
+	.reveal .progress,
+	.reveal .backgrounds {
+		display: none !important;
+	}
+
+	/* SECTION 3: Set body font face, size, and color.
+	   Consider using a serif font for readability. */
+	body, p, td, li, div {
+		font-size: 20pt!important;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		color: #000;
+	}
+
+	/* SECTION 4: Set heading font face, sizes, and color.
+	   Differentiate your headings from your body text.
+	   Perhaps use a large sans-serif for distinction. */
+	h1,h2,h3,h4,h5,h6 {
+		color: #000!important;
+		height: auto;
+		line-height: normal;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		text-shadow: 0 0 0 #000 !important;
+		text-align: left;
+		letter-spacing: normal;
+	}
+	/* Need to reduce the size of the fonts for printing */
+	h1 { font-size: 28pt !important;  }
+	h2 { font-size: 24pt !important; }
+	h3 { font-size: 22pt !important; }
+	h4 { font-size: 22pt !important; font-variant: small-caps; }
+	h5 { font-size: 21pt !important; }
+	h6 { font-size: 20pt !important; font-style: italic; }
+
+	/* SECTION 5: Make hyperlinks more usable.
+	   Ensure links are underlined, and consider appending
+	   the URL to the end of the link for usability. */
+	a:link,
+	a:visited {
+		color: #000 !important;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	/*
+	.reveal a:link:after,
+	.reveal a:visited:after {
+		content: " (" attr(href) ") ";
+		color: #222 !important;
+		font-size: 90%;
+	}
+	*/
+
+
+	/* SECTION 6: more reveal.js specific additions by @skypanther */
+	ul, ol, div, p {
+		visibility: visible;
+		position: static;
+		width: auto;
+		height: auto;
+		display: block;
+		overflow: visible;
+		margin: 0;
+		text-align: left !important;
+	}
+	.reveal pre,
+	.reveal table {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.reveal pre code {
+		padding: 20px;
+		border: 1px solid #ddd;
+	}
+	.reveal blockquote {
+		margin: 20px 0;
+	}
+	.reveal .slides {
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 0 !important;
+		zoom: 1 !important;
+
+		overflow: visible !important;
+		display: block !important;
+
+		text-align: left !important;
+		-webkit-perspective: none;
+		   -moz-perspective: none;
+		    -ms-perspective: none;
+		        perspective: none;
+
+		-webkit-perspective-origin: 50% 50%;
+		   -moz-perspective-origin: 50% 50%;
+		    -ms-perspective-origin: 50% 50%;
+		        perspective-origin: 50% 50%;
+	}
+	.reveal .slides section {
+		visibility: visible !important;
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+		display: block !important;
+		overflow: visible !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 60px 20px !important;
+		z-index: auto !important;
+
+		opacity: 1 !important;
+
+		page-break-after: always !important;
+
+		-webkit-transform-style: flat !important;
+		   -moz-transform-style: flat !important;
+		    -ms-transform-style: flat !important;
+		        transform-style: flat !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+
+		-webkit-transition: none !important;
+		   -moz-transition: none !important;
+		    -ms-transition: none !important;
+		        transition: none !important;
+	}
+	.reveal .slides section.stack {
+		padding: 0 !important;
+	}
+	.reveal section:last-of-type {
+		page-break-after: avoid !important;
+	}
+	.reveal section .fragment {
+		opacity: 1 !important;
+		visibility: visible !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+	}
+	.reveal section img {
+		display: block;
+		margin: 15px 0px;
+		background: rgba(255,255,255,1);
+		border: 1px solid #666;
+		box-shadow: none;
+	}
+
+	.reveal section small {
+		font-size: 0.8em;
+	}
+
+}  
+</script>
+
+
+<script id="pdf-css" type="application/dynamic-css">
+    
+/**
+ * This stylesheet is used to print reveal.js
+ * presentations to PDF.
+ *
+ * https://github.com/hakimel/reveal.js#pdf-export
+ */
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+
+body {
+	margin: 0 auto !important;
+	border: 0;
+	padding: 0;
+	float: none !important;
+	overflow: visible;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+}
+
+/* Remove any elements not needed in print. */
+.nestedarrow,
+.reveal .controls,
+.reveal .progress,
+.reveal .playback,
+.reveal.overview,
+.fork-reveal,
+.share-reveal,
+.state-background {
+	display: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-shadow: 0 0 0 #000 !important;
+}
+
+.reveal pre code {
+	overflow: hidden !important;
+	font-family: Courier, 'Courier New', monospace !important;
+}
+
+ul, ol, div, p {
+	visibility: visible;
+	position: static;
+	width: auto;
+	height: auto;
+	display: block;
+	overflow: visible;
+	margin: auto;
+}
+.reveal {
+	width: auto !important;
+	height: auto !important;
+	overflow: hidden !important;
+}
+.reveal .slides {
+	position: static;
+	width: 100%;
+	height: auto;
+
+	left: auto;
+	top: auto;
+	margin: 0 !important;
+	padding: 0 !important;
+
+	overflow: visible;
+	display: block;
+
+	-webkit-perspective: none;
+	   -moz-perspective: none;
+	    -ms-perspective: none;
+	        perspective: none;
+
+	-webkit-perspective-origin: 50% 50%; /* there isn't a none/auto value but 50-50 is the default */
+	   -moz-perspective-origin: 50% 50%;
+	    -ms-perspective-origin: 50% 50%;
+	        perspective-origin: 50% 50%;
+}
+
+.reveal .slides section {
+	page-break-after: always !important;
+
+	visibility: visible !important;
+	position: relative !important;
+	display: block !important;
+	position: relative !important;
+
+	margin: 0 !important;
+	padding: 0 !important;
+	box-sizing: border-box !important;
+	min-height: 1px;
+
+	opacity: 1 !important;
+
+	-webkit-transform-style: flat !important;
+	   -moz-transform-style: flat !important;
+	    -ms-transform-style: flat !important;
+	        transform-style: flat !important;
+
+	-webkit-transform: none !important;
+	   -moz-transform: none !important;
+	    -ms-transform: none !important;
+	        transform: none !important;
+}
+
+.reveal section.stack {
+	margin: 0 !important;
+	padding: 0 !important;
+	page-break-after: avoid !important;
+	height: auto !important;
+	min-height: auto !important;
+}
+
+.reveal img {
+	box-shadow: none;
+}
+
+.reveal .roll {
+	overflow: visible;
+	line-height: 1em;
+}
+
+/* Slide backgrounds are placed inside of their slide when exporting to PDF */
+.reveal section .slide-background {
+	display: block !important;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: -1;
+}
+
+/* All elements should be above the slide-background */
+.reveal section>* {
+	position: relative;
+	z-index: 1;
+}
+
+/* Display slide speaker notes when 'showNotes' is enabled */
+.reveal .speaker-notes-pdf {
+	display: block;
+	width: 100%;
+	max-height: none;
+	left: auto;
+	top: auto;
+	z-index: 100;
+}
+
+/* Display slide numbers when 'slideNumber' is enabled */
+.reveal .slide-number-pdf {
+	display: block;
+	position: absolute;
+	font-size: 14px;
+}
+
+</script>
+
+
+<script>
+var style = document.createElement( 'style' );
+style.type = 'text/css';
+var style_script_id = window.location.search.match( /print-pdf/gi ) ? 'pdf-css' : 'paper-css';
+var style_script = document.getElementById(style_script_id).text;
+style.innerHTML = style_script;
+document.getElementsByTagName('head')[0].appendChild(style);
+</script>
+
+    <script src="libs/header-attrs-2.17/header-attrs.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+    <h1 class="title">Sharing Image &amp; Video Data</h1>
+    <h2 class="author">Rick Gilmore</h2>
+    <h3 class="date">2023-02-22</h3>
+</section>
+
+<section>
+<section id="why-were-here" class="title-slide slide level1">
+<h1>Why we’re here</h1>
+
+</section>
+<section class="slide level2">
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/66oNv_DJuPc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+</iframe>
+<p><a href="https://www.youtube.com/watch?v=66oNv_DJuPc"><span
+class="citation" data-cites="NYU_Health_Sciences_Library2013-gp">NYU
+Health Sciences Library (2013)</span></a></p>
+</section>
+<section class="slide level2">
+
+<figure>
+<img
+data-src="http://www.nature.com/polopoly_fs/7.36716.1469695923!/image/reproducibility-graphic-online1.jpeg_gen/derivatives/landscape_630/reproducibility-graphic-online1.jpeg"
+alt="Baker (2016)" />
+<figcaption aria-hidden="true"><a
+href="https://doi.org/10.1038/533452a"><span class="citation"
+data-cites="Baker2016-rz">Baker (2016)</span></a></figcaption>
+</figure>
+</section>
+<section class="slide level2">
+
+<div class="figure">
+<img src="https://penn-state-open-science.github.io/survey-fall-2022/include/img/fig-repro-crisis-your-area-1.png" alt="Is there a reproducibility crisis in your area of research?" width="80%" />
+<p class="caption">
+Is there a reproducibility crisis in your area of research?
+</p>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="figure">
+<img src="include/img/bik-2022-nytimes.png" alt="[@Bik2022-hl](https://www.nytimes.com/interactive/2022/10/29/opinion/science-fraud-image-manipulation-photoshop.html)" width="1340" />
+<p class="caption">
+<a
+href="https://www.nytimes.com/interactive/2022/10/29/opinion/science-fraud-image-manipulation-photoshop.html"><span
+class="citation" data-cites="Bik2022-hl">Bik (2022)</span></a>
+</p>
+</div>
+</section>
+<section class="slide level2">
+
+<blockquote>
+<p>“<em>…<strong>you must not fool yourself—and you are the easiest
+person to fool</strong>…After you’ve not fooled yourself, it’s easy not
+to fool other scientists.</em>”</p>
+<p>– <a
+href="https://calteches.library.caltech.edu/51/2/CargoCult.htm"><span
+class="citation" data-cites="Feynman1974-ld">Feynman
+(1974)</span></a></p>
+</blockquote>
+</section>
+<section class="slide level2">
+
+<blockquote>
+<p>“<em>…I’m talking about a specific, <strong>extra type of
+integrity</strong> that is not lying, but <strong>bending over backwards
+to show how you’re maybe wrong</strong>, that you ought to do when
+acting as a scientist. And this is our responsibility as scientists,
+certainly to other scientists, and I think to laymen.</em>”</p>
+<p>– <a
+href="https://calteches.library.caltech.edu/51/2/CargoCult.htm"><span
+class="citation" data-cites="Feynman1974-ld">Feynman
+(1974)</span></a></p>
+</blockquote>
+</section></section>
+<section>
+<section id="penn-state-open-science-survey"
+class="title-slide slide level1">
+<h1>Penn State Open Science Survey</h1>
+
+</section>
+<section id="section" class="slide level2"
+data-background-iframe="https://forms.gle/eUGyWJPL226UNHfb8">
+<h2 data-background-iframe="https://forms.gle/eUGyWJPL226UNHfb8"></h2>
+</section>
+<section id="section-1" class="slide level2"
+data-background-iframe="https://penn-state-open-science.github.io/survey-fall-2022/">
+<h2
+data-background-iframe="https://penn-state-open-science.github.io/survey-fall-2022/"></h2>
+</section>
+<section id="section-2" class="slide level2"
+data-background-iframe="https://penn-state-open-science.github.io/survey-fall-2022/data-visualization.html">
+<h2
+data-background-iframe="https://penn-state-open-science.github.io/survey-fall-2022/data-visualization.html"></h2>
+</section>
+<section class="slide level2">
+
+<p>Link to the survey:</p>
+<p><img
+data-src="index_files/figure-revealjs/unnamed-chunk-4-1.png" /><!-- --></p>
+</section></section>
+<section>
+<section id="experience-awareness-of-open-science-practices"
+class="title-slide slide level1">
+<h1>Experience &amp; awareness of open science practices</h1>
+
+</section>
+<section class="slide level2">
+
+<div class="figure">
+<img src="https://penn-state-open-science.github.io/survey-fall-2022/include/img/fig-experience-w-open-science-1.png" alt="What is your experience with/knowledge of open science practices?" width="80%" />
+<p class="caption">
+What is your experience with/knowledge of open science practices?
+</p>
+</div>
+</section>
+<section id="wilkinson2016-qr" class="slide level2">
+<h2><a href="http://dx.doi.org/10.1038/sdata.2016.18"><span
+class="citation" data-cites="Wilkinson2016-qr">Wilkinson et al.
+(2016)</span></a></h2>
+<p>Research data should be…</p>
+<ul>
+<li><strong>F</strong>indable</li>
+<li><strong>A</strong>ccessible</li>
+<li><strong>I</strong>nteroperable</li>
+<li><strong>R</strong>eusable</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<div class="figure">
+<img src="https://penn-state-open-science.github.io/survey-fall-2022/include/img/fig-awareness-FAIR-1.png" alt="Describe your awareness of the FAIR (findable, accessible, interoperable, reusable) principles pertaining to research data" width="70%" />
+<p class="caption">
+Describe your awareness of the FAIR (findable, accessible,
+interoperable, reusable) principles pertaining to research data
+</p>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="figure">
+<img src="https://penn-state-open-science.github.io/survey-fall-2022/include/img/fig-apply-FAIR-own-research-1.png" alt="Do you apply FAIR principles in your own data management and sharing practices?" width="80%" />
+<p class="caption">
+Do you apply FAIR principles in your own data management and sharing
+practices?
+</p>
+</div>
+</section></section>
+<section>
+<section id="data-characteristics" class="title-slide slide level1">
+<h1>Data characteristics</h1>
+
+</section>
+<section class="slide level2">
+
+<div class="figure">
+<img src="https://penn-state-open-science.github.io/survey-fall-2022/include/img/fig-primary-data-types-1.png" alt="What are the primary types of digital data that are used in your research?" width="80%" />
+<p class="caption">
+What are the primary types of digital data that are used in your
+research?
+</p>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="figure">
+<img src="https://penn-state-open-science.github.io/survey-fall-2022/include/img/restricted-data-preprocess-1.png" alt="Do you collect data that have legal or ethical restrictions governing who may access it or how it may be used?" width="80%" />
+<p class="caption">
+Do you collect data that have legal or ethical restrictions governing
+who may access it or how it may be used?
+</p>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="figure">
+<img src="https://penn-state-open-science.github.io/survey-fall-2022/include/img/fig-data-storage-places-1.png" alt="Where do you store data for active projects where data collection and analysis is still ongoing?" width="80%" />
+<p class="caption">
+Where do you store data for active projects where data collection and
+analysis is still ongoing?
+</p>
+</div>
+</section></section>
+<section>
+<section id="sharing-with-collaborators"
+class="title-slide slide level1">
+<h1>Sharing with collaborators</h1>
+
+</section>
+<section class="slide level2">
+
+<div class="figure">
+<img src="https://penn-state-open-science.github.io/survey-fall-2022/include/img/fig-import-share-collab-1.png" alt="How important to you is sharing data from active projects with research collaborators at Penn State or outside of Penn State?" width="70%" />
+<p class="caption">
+How important to you is sharing data from active projects with research
+collaborators at Penn State or outside of Penn State?
+</p>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="figure">
+<img src="https://penn-state-open-science.github.io/survey-fall-2022/include/img/fig-convenient-share-collab-1.png" alt="How convenient is it for you to share data from active projects with research collaborators at Penn State or outside of Penn State?" width="70%" />
+<p class="caption">
+How convenient is it for you to share data from active projects with
+research collaborators at Penn State or outside of Penn State?
+</p>
+</div>
+</section>
+<section id="section-3" class="slide level2"
+data-background-iframe="https://penn-state-open-science.github.io/survey-fall-2022/data-visualization.html#barriers-to-sharing-with-research-collaborators">
+<h2
+data-background-iframe="https://penn-state-open-science.github.io/survey-fall-2022/data-visualization.html#barriers-to-sharing-with-research-collaborators"></h2>
+</section></section>
+<section>
+<section id="sharing-with-community" class="title-slide slide level1">
+<h1>Sharing with community</h1>
+
+</section>
+<section class="slide level2">
+
+<div class="figure">
+<img src="https://penn-state-open-science.github.io/survey-fall-2022/include/img/fig-import-share-community-1.png" alt="How important to you is sharing data from completed projects with the broader research community (i.e., not direct collaborators)?" width="70%" />
+<p class="caption">
+How important to you is sharing data from completed projects with the
+broader research community (i.e., not direct collaborators)?
+</p>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="figure">
+<img src="https://penn-state-open-science.github.io/survey-fall-2022/include/img/fig-obstacles-to-sharing-w-comm-1.png" alt="Which of the following obstacles make sharing data with the research community harder for you?" width="70%" />
+<p class="caption">
+Which of the following obstacles make sharing data with the research
+community harder for you?
+</p>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="figure">
+<img src="https://penn-state-open-science.github.io/survey-fall-2022/include/img/fig-where-data-shared-1.png" alt="If you have shared data with the research community, where have you shared it?" width="80%" />
+<p class="caption">
+If you have shared data with the research community, where have you
+shared it?
+</p>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="figure">
+<img src="https://penn-state-open-science.github.io/survey-fall-2022/include/img/fig-share-materials-community-1.png" alt="How often do you openly share other materials related to your research (protocols, reagents, samples, apparatus, designs, etc.) with other researchers?" width="70%" />
+<p class="caption">
+How often do you openly share other materials related to your research
+(protocols, reagents, samples, apparatus, designs, etc.) with other
+researchers?
+</p>
+</div>
+</section></section>
+<section>
+<section id="sharing-requirements" class="title-slide slide level1">
+<h1>Sharing requirements</h1>
+
+</section>
+<section class="slide level2">
+
+<div class="figure">
+<img src="https://penn-state-open-science.github.io/survey-fall-2022/include/img/fig-funders-require-data-sharing-1.png" alt="Do research funders in your field require data sharing?" width="80%" />
+<p class="caption">
+Do research funders in your field require data sharing?
+</p>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="figure">
+<img src="https://penn-state-open-science.github.io/survey-fall-2022/include/img/fig-journals-require-data-sharing-1.png" alt="Do journals in your field require data sharing?" width="80%" />
+<p class="caption">
+Do journals in your field require data sharing?
+</p>
+</div>
+</section></section>
+<section>
+<section id="sharing-image-video-data" class="title-slide slide level1">
+<h1>Sharing image &amp; video data</h1>
+
+</section>
+<section id="the-challenge" class="slide level2">
+<h2>The challenge</h2>
+<div class="fragment">
+<p>Images/video of people pose risks of identification</p>
+</div>
+</section>
+<section id="one-solution" class="slide level2">
+<h2>(One) solution</h2>
+<p></br></br></br></p>
+<div class="fragment">
+<p>Alter images/videos</p>
+</div>
+</section>
+<section class="slide level2">
+
+<figure>
+<img
+data-src="https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/49647129/original/50b3952f2fcb3e81874e1aca222281240d11b934/blur-faces-objects-brands-or-anything-else-in-your-video.png"
+alt="https://www.fiverr.com/visionesque/blur-faces-objects-brands-or-anything-else-in-your-video" />
+<figcaption aria-hidden="true"><a
+href="https://www.fiverr.com/visionesque/blur-faces-objects-brands-or-anything-else-in-your-video"
+class="uri">https://www.fiverr.com/visionesque/blur-faces-objects-brands-or-anything-else-in-your-video</a></figcaption>
+</figure>
+</section>
+<section id="but-altering-imagesvideo" class="slide level2">
+<h2>But, altering images/video…</h2>
+<p></br></br></br></p>
+<div class="fragment">
+<p>is time/resource consuming</br></br></p>
+</div>
+<div class="fragment">
+<p>makes images/video less valuable for reuse by others</br></br></p>
+</div>
+<div class="fragment">
+<p>might pose risks to participants (if using external service)</p>
+</div>
+</section>
+<section id="another-solution" class="slide level2">
+<h2>(Another) solution</h2>
+<div class="fragment">
+<p>Share with <em>researchers</em> not with the public</p>
+</div>
+<div class="fragment">
+<p>Researchers with ethics training</p>
+</div>
+<div class="fragment">
+<p>Researchers subject to institutional supervision</p>
+</div>
+</section>
+<section id="share-with-participant-permission" class="slide level2">
+<h2>Share with participant permission</h2>
+<div class="fragment">
+<p>Share only with research team members OR </br></p>
+<p>Share with other researchers OR </br></p>
+<p>Share with other researchers + allow clips to be shown OR </br></p>
+<p>Share publicly</p>
+</div>
+</section></section>
+<section>
+<section id="databrary" class="title-slide slide level1">
+<h1>Databrary</h1>
+
+</section>
+<section id="section-4" class="slide level2"
+data-background-iframe="https://databrary.org/">
+<h2 data-background-iframe="https://databrary.org/"></h2>
+</section>
+<section id="about-databrary" class="slide level2">
+<h2>About Databrary</h2>
+<p></br></br></p>
+<div class="fragment">
+<p>Video data library for researchers in the behavioral
+sciences</br></br></p>
+</div>
+<div class="fragment">
+<p>Restricted access data repository</br></br></p>
+</div>
+<div class="fragment">
+<p>Housed at NYU; staff at NYU &amp; PSU</br></br></p>
+</div>
+<div class="fragment">
+<p>World’s only repository dedicated to storing and sharing video/audio
+and other identifiable data</br></br></p>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="figure">
+<img src="include/img/databrary-weekly-2023-02-13.png" alt="Databrary investigators &amp; institutions 2014-" width="780" />
+<p class="caption">
+Databrary investigators &amp; institutions 2014-
+</p>
+</div>
+</section>
+<section id="section-5" class="slide level2"
+data-background-iframe="https://databrary.org/about/agreement.html">
+<h2
+data-background-iframe="https://databrary.org/about/agreement.html"></h2>
+</section>
+<section class="slide level2">
+
+<p>Institutional authorization via formal <a
+href="https://databrary.org/about/agreement.html">Databrary Access
+Agreement</a></p>
+<p>Institution signs &amp; Investigator (sometimes)</p>
+</section>
+<section class="slide level2">
+
+<div class="figure">
+<img src="include/img/databrary-inst-map-2023-02-22.png" alt="Map of Databrary-authorizing institutions as of 2023-02-22." width="1213" />
+<p class="caption">
+Map of Databrary-authorizing institutions as of 2023-02-22.
+</p>
+</div>
+</section>
+<section class="slide level2">
+
+<p>If you’re a grad student or postdoc, you can apply to be an Affiliate
+user, with access tied to your PI.</p>
+</section>
+<section id="httpsdatabrary.orgsupportsupportirb.html"
+class="slide level2"
+data-background-iframe="https://databrary.org/support/irb.html">
+<h2 data-background-iframe="https://databrary.org/support/irb.html"><a
+href="https://databrary.org/support/support/irb.html"
+class="uri">https://databrary.org/support/support/irb.html</a></h2>
+</section>
+<section id="httpsdatabrary.orgsupportirbrelease-template.html"
+class="slide level2"
+data-background-iframe="https://databrary.org/support/irb/release-template.html">
+<h2
+data-background-iframe="https://databrary.org/support/irb/release-template.html"><a
+href="https://databrary.org/support/irb/release-template.html"
+class="uri">https://databrary.org/support/irb/release-template.html</a></h2>
+</section>
+<section id="httpsdatabrary.orgsupportirbscript.html"
+class="slide level2"
+data-background-iframe="https://databrary.org/support/irb/script.html">
+<h2
+data-background-iframe="https://databrary.org/support/irb/script.html"><a
+href="https://databrary.org/support/irb/script.html"
+class="uri">https://databrary.org/support/irb/script.html</a></h2>
+</section>
+<section id="section-6" class="slide level2"
+data-background-video="https://databrary.org/video/example-video-1.mp4">
+<h2
+data-background-video="https://databrary.org/video/example-video-1.mp4"></h2>
+</section></section>
+<section>
+<section id="why-share-images-video" class="title-slide slide level1">
+<h1>Why share images &amp; video?</h1>
+
+</section>
+<section class="slide level2">
+
+<div class="figure">
+<img src="include/img/gilmore-adolph-nat-hum-beh-2017.png" alt="[@Gilmore2017-wd](https://doi.org/10.1038/s41562-017-0128)" width="1436" />
+<p class="caption">
+<a href="https://doi.org/10.1038/s41562-017-0128"><span class="citation"
+data-cites="Gilmore2017-wd">Gilmore &amp; Adolph (2017)</span></a>
+</p>
+</div>
+</section>
+<section id="images-and-video-are-essential-to-the-study-of-behavior"
+class="slide level2">
+<h2>Images and video are essential to the study of
+<em>behavior</em></h2>
+</section>
+<section id="section-7" class="slide level2"
+data-background-video="https://www.anhourinthelife.org/img/PLAY-parents-noaudio.mp4">
+<h2
+data-background-video="https://www.anhourinthelife.org/img/PLAY-parents-noaudio.mp4"></h2>
+</section>
+<section id="play-learning-across-a-year-play-project"
+class="slide level2">
+<h2>Play &amp; Learning Across a Year (PLAY) Project</h2>
+<p></br></br> 1 hour of natural behavior in the home</br></br> Mothers
+&amp; 12-, 18-, and 24-month-old infants</br></br> Health, vocabulary,
+temperament, <a
+href="https://PLAY-behaviorome.github.io/KoBoToolbox/">demographic
+measures</a></br></br></p>
+<div class="fragment">
+<p>All protocols openly shared and documented on
+<strong>video</strong>.</p>
+</div>
+</section>
+<section id="httpsplay-project.org" class="slide level2"
+data-background-iframe="https://www.play-project.org/collection.html">
+<h2
+data-background-iframe="https://www.play-project.org/collection.html"><a
+href="https://play-project.org"
+class="uri">https://play-project.org</a></h2>
+</section></section>
+<section id="your-thoughts" class="title-slide slide level1">
+<h1>Your thoughts?</h1>
+
+</section>
+
+<section>
+<section id="open-science-psu" class="title-slide slide level1">
+<h1>Open science @ PSU</h1>
+
+</section>
+<section class="slide level2">
+
+<div class="figure">
+<img src="https://penn-state-open-science.github.io/survey-fall-2022/include/img/fig-benefit-from-psu-ctr-1.png" alt="How much benefit would you derive from a center at Penn State focused on supporting the adoption of best practices in data management and sharing, code sharing, open science, and reproducible research?" width="70%" />
+<p class="caption">
+How much benefit would you derive from a center at Penn State focused on
+supporting the adoption of best practices in data management and
+sharing, code sharing, open science, and reproducible research?
+</p>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="figure">
+<img src="https://penn-state-open-science.github.io/survey-fall-2022/include/img/fig-services-from-center-1.png" alt="Select the services that would most benefit your research if offered by such a center." width="80%" />
+<p class="caption">
+Select the services that would most benefit your research if offered by
+such a center.
+</p>
+</div>
+</section>
+<section class="slide level2">
+
+<p><a href="https://github.com/penn-state-open-science/roadmap/"
+class="uri">https://github.com/penn-state-open-science/roadmap/</a></p>
+<ul>
+<li>August 2023: Open Science Bootcamp</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<figure>
+<img
+data-src="https://media2.giphy.com/media/BpGWitbFZflfSUYuZ9/giphy.gif"
+alt="Source: https://media2.giphy.com/media/BpGWitbFZflfSUYuZ9/giphy.gif" />
+<figcaption aria-hidden="true">Source: <a
+href="https://media2.giphy.com/media/BpGWitbFZflfSUYuZ9/giphy.gif"
+class="uri">https://media2.giphy.com/media/BpGWitbFZflfSUYuZ9/giphy.gif</a></figcaption>
+</figure>
+</section></section>
+<section>
+<section id="resources" class="title-slide slide level1">
+<h1>Resources</h1>
+
+</section>
+<section class="slide level2">
+
+<p>This talk was produced on 2023-02-22 in <a
+href="http://rstudio.com/">RStudio</a> using <a
+href="https://rmarkdown.rstudio.com">R Markdown</a> and the <a
+href="https://revealjs.com">reveal.js</a> framework.</p>
+<p>Information about the R Session that produced the code is as
+follows:</p>
+<pre><code>## R version 4.2.1 (2022-06-23)
+## Platform: x86_64-apple-darwin17.0 (64-bit)
+## Running under: macOS Ventura 13.2.1
+## 
+## Matrix products: default
+## LAPACK: /Library/Frameworks/R.framework/Versions/4.2/Resources/lib/libRlapack.dylib
+## 
+## locale:
+## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+## 
+## attached base packages:
+## [1] stats     graphics  grDevices utils     datasets  methods  
+## [7] base     
+## 
+## other attached packages:
+## [1] qrcode_0.2.1
+## 
+## loaded via a namespace (and not attached):
+##  [1] rstudioapi_0.14  knitr_1.40       magrittr_2.0.3  
+##  [4] R6_2.5.1         rlang_1.0.6      fastmap_1.1.0   
+##  [7] stringr_1.5.0    highr_0.9        tools_4.2.1     
+## [10] revealjs_0.9     xfun_0.34        png_0.1-7       
+## [13] cli_3.6.0        jquerylib_0.1.4  htmltools_0.5.4 
+## [16] yaml_2.3.6       digest_0.6.31    assertthat_0.2.1
+## [19] lifecycle_1.0.3  sass_0.4.4       vctrs_0.5.2     
+## [22] glue_1.6.2       cachem_1.0.6     evaluate_0.17   
+## [25] rmarkdown_2.17   stringi_1.7.12   compiler_4.2.1  
+## [28] bslib_0.4.2      jsonlite_1.8.4</code></pre>
+</section>
+<section id="code" class="slide level2">
+<h2>Code</h2>
+<p><strong>GitHub repo</strong>: <a
+href="https://github.com/penn-state-open-science/"
+class="uri">https://github.com/penn-state-open-science/</a></p>
+<p><strong>Survey protocol &amp; results</strong>: <a
+href="https://penn-state-open-science.github.io/survey-fall-2022/"
+class="uri">https://penn-state-open-science.github.io/survey-fall-2022/</a></p>
+</section>
+<section class="slide level2">
+
+<p><strong>Talk slides</strong>: <a
+href="https://penn-state-open-science.github.io/2023-03-01-PSU-SARI/"
+class="uri">https://penn-state-open-science.github.io/2023-03-01-PSU-SARI/</a></p>
+<p><img
+data-src="index_files/figure-revealjs/unnamed-chunk-26-1.png" /><!-- --></p>
+</section>
+<section id="references" class="slide level2 unnumbered">
+<h2 class="unnumbered">References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent"
+data-line-spacing="2" role="doc-bibliography">
+<div id="ref-Baker2016-rz" class="csl-entry" role="doc-biblioentry">
+Baker, M. (2016). 1,500 scientists lift the lid on reproducibility.
+<em>Nature News</em>, <em>533</em>(7604), 452. <a
+href="https://doi.org/10.1038/533452a">https://doi.org/10.1038/533452a</a>
+</div>
+<div id="ref-Bik2022-hl" class="csl-entry" role="doc-biblioentry">
+Bik, E. (2022). Science has a nasty photoshopping problem. <em>The New
+York Times</em>. Retrieved from <a
+href="https://www.nytimes.com/interactive/2022/10/29/opinion/science-fraud-image-manipulation-photoshop.html">https://www.nytimes.com/interactive/2022/10/29/opinion/science-fraud-image-manipulation-photoshop.html</a>
+</div>
+<div id="ref-Feynman1974-ld" class="csl-entry" role="doc-biblioentry">
+Feynman, R. P. (1974). Cargo cult science. Retrieved from <a
+href="https://calteches.library.caltech.edu/51/2/CargoCult.htm">https://calteches.library.caltech.edu/51/2/CargoCult.htm</a>
+</div>
+<div id="ref-Gilmore2017-wd" class="csl-entry" role="doc-biblioentry">
+Gilmore, R. O., &amp; Adolph, K. E. (2017). Video can make behavioural
+science more reproducible. <em>Nature Human Behaviour</em>,
+<em>1</em>(7). <a
+href="https://doi.org/10.1038/s41562-017-0128">https://doi.org/10.1038/s41562-017-0128</a>
+</div>
+<div id="ref-NYU_Health_Sciences_Library2013-gp" class="csl-entry"
+role="doc-biblioentry">
+NYU Health Sciences Library. (2013, November). Data sharing and
+management snafu in 3 short acts (higher quality). Youtube. Retrieved
+from <a
+href="https://www.youtube.com/watch?v=66oNv_DJuPc">https://www.youtube.com/watch?v=66oNv_DJuPc</a>
+</div>
+<div id="ref-Wilkinson2016-qr" class="csl-entry" role="doc-biblioentry">
+Wilkinson, M. D., Dumontier, M., Aalbersberg, I. J. J., Appleton, G.,
+Axton, M., Baak, A., … Mons, B. (2016). The <span>FAIR</span> guiding
+principles for scientific data management and stewardship.
+<em>Scientific Data</em>, <em>3</em>, 160018. <a
+href="https://doi.org/10.1038/sdata.2016.18">https://doi.org/10.1038/sdata.2016.18</a>
+</div>
+</div>
+</section></section>
+    </div>
+  </div>
+
+  <script src="libs/reveal.js-3.3.0.1/lib/js/head.min.js"></script>
+  <script src="libs/reveal.js-3.3.0.1/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+        // Display a presentation progress bar
+        progress: true,
+        // Display the page number of the current slide
+        slideNumber: true,
+        // Push each slide change to the browser history
+        history: true,
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+        // Enable the slide overview mode
+        overview: true,
+        // Vertical centering of slides
+        center: true,
+        // Enables touch navigation on devices with touch input
+        touch: true,
+        // Loop the presentation
+        loop: false,
+        // Turns fragments on and off globally
+        fragments: true,
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+        // Transition style
+        transition: 'fade', // none/fade/slide/convex/concave/zoom
+        // Transition speed
+        transitionSpeed: 'default', // default/fast/slow
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'none', // none/fade/slide/convex/concave/zoom
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+
+
+        // Optional reveal.js plugins
+        dependencies: [
+        ]
+      });
+    </script>
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+<script>
+  (function() {
+    if (window.jQuery) {
+      Reveal.addEventListener( 'slidechanged', function(event) {  
+        window.jQuery(event.previousSlide).trigger('hidden');
+        window.jQuery(event.currentSlide).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+
+  </body>
+</html>

@@ -13,7 +13,7 @@ output:
       # “simple”, “dark”, “black”, “sky”, “beige”, “serif”, “solarized”, “blood”, “moon”, “night”, “league”, or “white”
       highlight: default
       # “default”, “tango”, “pygments”, “kate”, “monochrome”, “espresso”, “zenburn”, “haddock”, or “breezedark”
-      center: true
+      center: false
       transition: fade
       # “convex”, “fade”, “slide”, “concave”, “zoom”, or “none”
       background_transition: none
@@ -41,12 +41,12 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ---
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/66oNv_DJuPc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="1068" height="600" src="https://www.youtube.com/embed/66oNv_DJuPc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 [@NYU_Health_Sciences_Library2013-gp](https://www.youtube.com/watch?v=66oNv_DJuPc)
 
 ---
-
+ 
 ```{r, fig.cap="[@Baker2016-rz](https://doi.org/10.1038/533452a)"}
 knitr::include_graphics("http://www.nature.com/polopoly_fs/7.36716.1469695923!/image/reproducibility-graphic-online1.jpeg_gen/derivatives/landscape_630/reproducibility-graphic-online1.jpeg")
 ```
@@ -101,15 +101,16 @@ plot(code)
 knitr::include_graphics("https://penn-state-open-science.github.io/survey-fall-2022/include/img/fig-experience-w-open-science-1.png")
 ```
 
-## [@Wilkinson2016-qr](http://dx.doi.org/10.1038/sdata.2016.18)
+## Research data should be...
 
-Research data should be...
+. . .
 
 - **F**indable
 - **A**ccessible
 - **I**nteroperable
 - **R**eusable
 
+[@Wilkinson2016-qr](http://dx.doi.org/10.1038/sdata.2016.18)
 
 ---
 
@@ -204,6 +205,8 @@ knitr::include_graphics("https://penn-state-open-science.github.io/survey-fall-2
 
 ## The challenge
 
+</br></br></br>
+
 . . .
 
 Images/video of people pose risks of identification
@@ -242,6 +245,8 @@ might pose risks to participants (if using external service)
 
 ## (Another) solution
 
+</br></br></br>
+
 . . .
 
 Share with *researchers* not with the public
@@ -255,6 +260,8 @@ Researchers with ethics training
 Researchers subject to institutional supervision
   
 ## Share with participant permission
+
+</br></br></br>
 
 . . .
 
@@ -302,6 +309,8 @@ knitr::include_graphics("include/img/databrary-weekly-2023-02-13.png")
 
 Institutional authorization via formal [Databrary Access Agreement](https://databrary.org/about/agreement.html)
 
+</br></br></br>
+
 Institution signs & Investigator (sometimes)
 
 ---
@@ -311,6 +320,8 @@ knitr::include_graphics("include/img/databrary-inst-map-2023-02-22.png")
 ```
 
 ---
+
+</br></br></br>
 
 If you're a grad student or postdoc, you can apply to be an Affiliate user, with access tied to your PI.
 
@@ -336,6 +347,8 @@ knitr::include_graphics("include/img/gilmore-adolph-nat-hum-beh-2017.png")
 
 ## Play & Learning Across a Year (PLAY) Project
 
+[play-project.org](https://play-project.org)
+
 </br></br>
 1 hour of natural behavior in the home</br></br>
 Mothers & 12-, 18-, and 24-month-old infants</br></br>
@@ -345,9 +358,11 @@ Health, vocabulary, temperament, [demographic measures](https://PLAY-behaviorome
 
 All protocols openly shared and documented on **video**.
 
-## <https://play-project.org> {data-background-iframe="https://www.play-project.org/collection.html"}
+## {data-background-iframe="https://www.play-project.org/collection.html"}
 
 # Your thoughts?
+
+
 
 # Open science @ PSU
 
@@ -363,11 +378,36 @@ knitr::include_graphics("https://penn-state-open-science.github.io/survey-fall-2
 knitr::include_graphics("https://penn-state-open-science.github.io/survey-fall-2022/include/img/fig-services-from-center-1.png")
 ```
 
----
+## {data-background-image="include/img/penn-state-open-science-github.png"}
 
-<https://github.com/penn-state-open-science/roadmap/>
 
-- August 2023: Open Science Bootcamp
+## Take homes
+
+</br></br>
+
+. . .
+
+Images and video *can* be shared
+
+. . .
+
+Images and video *should* be shared
+
+. . .
+
+Images and video *are already being* shared
+
+</br></br>
+
+. . .
+
+Let's share images and video...
+
+to improve transparency and reproducibility
+
+. . .
+
+and accelerate discovery
 
 ---
 

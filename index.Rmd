@@ -267,14 +267,18 @@ Researchers subject to institutional supervision
 
 Share only with research team members OR </br>
 
+. . .
+
 Share with other researchers OR </br>
+
+. . .
 
 Share with other researchers + allow clips to be shown OR </br>
 
+. . .
+
 Share publicly
 
-# Databrary
-  
 ## {data-background-iframe="https://databrary.org/"}
 
 ## About Databrary
@@ -325,13 +329,15 @@ knitr::include_graphics("include/img/databrary-inst-map-2023-02-22.png")
 
 If you're a grad student or postdoc, you can apply to be an Affiliate user, with access tied to your PI.
 
-## <https://databrary.org/support/support/irb.html> {data-background-iframe="https://databrary.org/support/irb.html"}
+## {data-background-iframe="https://databrary.org/support/irb.html"}
 
-## <https://databrary.org/support/irb/release-template.html> {data-background-iframe="https://databrary.org/support/irb/release-template.html"}
+## {data-background-iframe="https://databrary.org/support/irb/release-template.html"}
 
-## <https://databrary.org/support/irb/script.html> {data-background-iframe="https://databrary.org/support/irb/script.html"}
+## {data-background-iframe="https://databrary.org/support/irb/script.html"}
 
 ## {data-background-video="https://databrary.org/video/example-video-1.mp4"}
+
+## {data-background-iframe="https://databrary.org/support/irb/release-levels.html"}
 
 # Why share images & video?
 
@@ -347,7 +353,7 @@ knitr::include_graphics("include/img/gilmore-adolph-nat-hum-beh-2017.png")
 
 ## Play & Learning Across a Year (PLAY) Project
 
-[play-project.org](https://play-project.org)
+[https://play-project.org](https://play-project.org)
 
 </br></br>
 1 hour of natural behavior in the home</br></br>
@@ -360,9 +366,29 @@ All protocols openly shared and documented on **video**.
 
 ## {data-background-iframe="https://www.play-project.org/collection.html"}
 
+# Other types of images...
+
+## Back to Elizabeth Bik
+
+```{r, fig.cap="[@Bik2022-hl](https://www.nytimes.com/interactive/2022/10/29/opinion/science-fraud-image-manipulation-photoshop.html)"}
+knitr::include_graphics("include/img/bik-2022-nytimes.png")
+```
+
+## *Script* figure/image manipulations wherever possible
+
+```{r}
+knitr::include_graphics("include/img/qian-etal-title.png")
+```
+
+## [@Qian2022-yp](http://dx.doi.org/10.1038/s41598-022-22269-y)
+
+```{r, fig.cap="Figure 1 from [@Qian2022-yp](http://dx.doi.org/10.1038/s41598-022-22269-y)"}
+knitr::include_graphics("https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41598-022-22269-y/MediaObjects/41598_2022_22269_Fig1_HTML.png?as=webp")
+```
+
+## {data-background-image="include/img/qian-etal-github-fig-code.png"}
+
 # Your thoughts?
-
-
 
 # Open science @ PSU
 
